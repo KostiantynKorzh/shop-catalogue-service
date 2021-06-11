@@ -1,6 +1,5 @@
 package me.study.catalogue_service.service;
 
-import me.study.catalogue_service.dto.ItemDTO;
 import me.study.catalogue_service.model.Item;
 import me.study.catalogue_service.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,13 @@ public class ItemService {
                 .build());
     }
 
-    public List<Item> getAllItems(){
+    public List<Item> getAllItems() {
         return itemRepository.findAll();
+    }
+
+    public Item getItem(Long id) {
+        return itemRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("No such item"));
     }
 
 }

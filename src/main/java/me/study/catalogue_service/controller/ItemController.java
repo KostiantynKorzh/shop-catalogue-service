@@ -22,8 +22,13 @@ public class ItemController {
     }
 
     @GetMapping
-    public List<ItemDTO> getAllItems(){
+    public List<ItemDTO> getAllItems() {
         return ItemMapper.INSTANCE.map(itemService.getAllItems());
+    }
+
+    @GetMapping("/{id}")
+    public ItemDTO getItem(@PathVariable Long id) {
+        return ItemMapper.INSTANCE.toDTO(itemService.getItem(id));
     }
 
 }
