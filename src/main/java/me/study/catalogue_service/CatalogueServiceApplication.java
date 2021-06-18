@@ -7,6 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CatalogueServiceApplication {
 
     public static void main(String[] args) {
+
+        System.out.println("Test");
+        System.out.println(System.getenv("DB_URL"));
+
         SpringApplication.run(CatalogueServiceApplication.class, args);
     }
 
