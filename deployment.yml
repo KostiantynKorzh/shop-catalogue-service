@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: catalogue-service-container
-          image: demoshop/catalogue-service:latest
+          image: catalogue-service
           imagePullPolicy: Never
           ports:
             - containerPort: 8081

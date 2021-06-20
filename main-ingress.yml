@@ -5,50 +5,29 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/default-backend: ingress-nginx-controller
     kubernetes.io/ingress.class: nginx
-      ## tells ingress to check for regex in the config file
-    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
-  defaultBackend:
-    service:
-      name: catalogue-service
-      port:
-        number: 8081
   rules:
-#    - host: "*"
-    - http:
+    - host: demo-shop.com
+      http:
         paths:
-          - path: /
+          - path: /user-service(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: user-service
+                port:
+                  number: 8082
+          - path: /catalogue-service(/|$)(.*)
             pathType: Prefix
             backend:
               service:
                 name: catalogue-service
                 port:
                   number: 8081
-\
-
-#spec:
-#  rules:
-#    - host: demo-shop.com
-#      http:
-#        paths:
-#          - path: /user-service(/|$)(.*)
-#            pathType: Prefix
-#            backend:
-#              service:
-#                name: user-service
-#                port:
-#                  number: 8082
-#          - path: /catalogue-service
-#            pathType: Prefix
-#            backend:
-#              service:
-#                name: catalogue-service
-#                port:
-#                  number: 8081
-#          - path: /payment-service(/|$)(.*)
-#            pathType: Prefix
-#            backend:
-#              service:
-#                name: payment-service
-#                port:
-#                  number: 8083
+          - path: /payment-service(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: payment-service
+                port:
+                  number: 8083
