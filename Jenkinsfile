@@ -3,7 +3,9 @@ pipeline {
 
     stages {
         stage('Pulling git repo'){
+        steps{
             git url: 'https://github.com/KostiantynKorzh/shop-catalogue-service.git'
+            }
         }
 
         stage('Build') {
