@@ -13,10 +13,11 @@ public class ItemService {
     @Autowired
     private ItemRepository itemRepository;
 
-    public Item createNewItem(String title, Double price) {
+    public Item createNewItem(String title, Double price, String imagePath) {
         return itemRepository.save(Item.builder()
                 .title(title)
                 .price(price)
+                .imagePath(imagePath)
                 .build());
     }
 

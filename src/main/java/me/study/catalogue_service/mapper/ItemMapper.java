@@ -12,7 +12,7 @@ public interface ItemMapper {
 
     ItemMapper INSTANCE = Mappers.getMapper(ItemMapper.class);
 
-    //    @Mapping(target = "password", ignore = true)
+//    @Mapping(target = "password", ignore = true)
     ItemDTO toDTO(Item item);
     List<ItemDTO> map(List<Item> items);
 }

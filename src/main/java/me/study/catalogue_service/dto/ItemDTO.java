@@ -12,4 +12,6 @@ public class ItemDTO {
 
     private Double price;
 
+    private String imagePath;
+
 }

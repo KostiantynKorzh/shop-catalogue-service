@@ -19,7 +19,7 @@ public class ItemController {
 
     @PostMapping
     public ItemDTO createNewItem(@RequestBody NewItemRequest newItem) {
-        return ItemMapper.INSTANCE.toDTO(itemService.createNewItem(newItem.title(), newItem.price()));
+        return ItemMapper.INSTANCE.toDTO(itemService.createNewItem(newItem.title(), newItem.price(), newItem.imagePath()));
     }
 
     @GetMapping

@@ -26,6 +26,8 @@ public class Item {
 
     private Double price;
 
+    private String imagePath;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
