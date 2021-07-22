@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Pre-Test') {
+                steps {
+                    whoami
+                }
+            }
         stage('Pulling git repo'){
         steps{
              git branch: "main", url: 'https://github.com/KostiantynKorzh/shop-catalogue-service.git'
@@ -11,11 +16,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo "${env.BUILD_ID}"
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
             }
         }
         stage('Deploy') {
