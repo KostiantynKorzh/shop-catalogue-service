@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -27,6 +28,12 @@ public class Item {
     private Double price;
 
     private String imagePath;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "item_categories",
+            joinColumns = @JoinColumn(name = "item_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private List<Category> categories;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

@@ -2,6 +2,8 @@ package me.study.catalogue_service.dto;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 
 public class ItemDTO {
@@ -13,5 +15,7 @@ public class ItemDTO {
     private Double price;
 
     private String imagePath;
+
+    private String createdAt;
 
 }
