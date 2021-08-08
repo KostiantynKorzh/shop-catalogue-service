@@ -30,4 +30,8 @@ public class ItemService {
                 new RuntimeException("No such item"));
     }
 
+    public List<Item> getItemsForOrder(List<Long> ids){
+        return itemRepository.findAllByIdIn(ids);
+    }
+
 }
