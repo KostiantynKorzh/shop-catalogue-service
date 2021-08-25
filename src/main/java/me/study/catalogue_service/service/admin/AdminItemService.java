@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 public class AdminItemService {
@@ -52,6 +51,7 @@ public class AdminItemService {
         if (categoryIds != null) {
             item.setCategories(formatCategoryIdsToCategories(categoryIds));
         }
+
         return itemRepository.save(item);
     }
 

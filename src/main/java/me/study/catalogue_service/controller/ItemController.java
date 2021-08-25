@@ -1,12 +1,12 @@
 package me.study.catalogue_service.controller;
 
 import me.study.catalogue_service.dto.ItemDTO;
-import me.study.catalogue_service.dto.request.NewItemRequest;
 import me.study.catalogue_service.mapper.ItemMapper;
 import me.study.catalogue_service.model.Item;
 import me.study.catalogue_service.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -20,14 +20,11 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-    @PostMapping
-    public ItemDTO createNewItem(@RequestBody NewItemRequest newItem) {
-        return ItemMapper.INSTANCE.toDTO(itemService.createNewItem(newItem.title(), newItem.price(), newItem.imagePath()));
-    }
-
     @GetMapping
-    public List<ItemDTO> getAllItems() {
-        return ItemMapper.INSTANCE.map(itemService.getAllItems());
+    public ResponseEntity<List<ItemDTO>> getAllItems() throws InterruptedException {
+        Thread.sleep(2000);
+//        return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
+        return ResponseEntity.ok(ItemMapper.INSTANCE.map(itemService.getAllItems()));
     }
 
     @GetMapping("/{id}")
